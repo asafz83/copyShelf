@@ -1,25 +1,30 @@
+<!DOCTYPE html>
 <html>
-    <head>
-		<script src="targil.js"></script>
-		<link href="targil.css"  rel="stylesheet" type="text/css"/>
-    </head>
-    
-    <body>
-		<h1>My bookshelf</h1>
-		<h2>Enter your book</h2>
-		<div>
-			<input type="text" placeholder="Book name" id="bookName"/>
-			<input type="text" placeholder="Author name" id="authorName"/>
-			<input type="text" placeholder="Give a score(1-10)" id="score" />
-			<button onclick="addBook()">Add this book</button>
-			<button onclick="reset()">Reset all fields</button>
-		</div>
-		
-		<h3>Your Books:</h3>
-		<ul id="bookList">
-			
-		</ul>
-		
-            
-    </body>
-</html>   
+<title>Book Shelf</title>
+<meta charset="utf-8">
+<script src="targil.js"></script>
+<link href="targil.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <h1>My bookshelf</h1>
+    <h2>Enter your book</h2>
+    <div>
+        <input type="text" placeholder="Book name" id="bookName" />
+        <input type="text" placeholder="Author name" id="authorName" />
+        <input type="text" placeholder="Give a score(1-10)" id="score" />
+        <button onclick="addBook()">Add this book</button>
+        <button onclick="resetFields()">Reset all fields</button>
+    </div>
+
+    <h3>Your Books:</h3>
+    <button class="right" onclick="resetBookList()"> Reset Book List</button>
+    <br>
+    <ul id="bookList">
+
+    </ul>
+
+
+</body>
+
+</html>
