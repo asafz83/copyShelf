@@ -14,28 +14,64 @@ function resetFields(){
 function resetBookList(){
     document.getElementById("bookList").innerHTML = "";
 }
-
-function isBookValid (book) {
+function isBookValid(book) {
+    if (isNameValid(book.bookName) &&
+        isAuthorNameValid(book.authorName) &&
+        isScoreValid(book.score)){
+        return true;
+    }
+    return false;
+}
+function isNameValid(name){
     // validate book name
-    if (book.name === ""){
-        return false;
-    }
-    // validate book author
-    if (book.authorName === ""){
-        return false;
-    }
-    // validate book score
-    if (!(book.score >= 1 && book.score <= 10)){
+    if (name === ""){
         return false;
     }
     return true;
+}
+function isAuthorNameValid(authorName){
+    // validate book author
+    if (authorName === ""){
+        return false;
+    }
+    return true;
+}
 
+function isScoreValid(score) {
+    // validate book score
+    if (!((typeof parseInt(score)) === "number" &&
+          score >= 1 && score <= 10)){
+        return false;
+    }
+    return true;
+}
+function markWrongFields(book) {
+    if (!isNameValid(book.bookName)){
+        document.getElementById('bookName').classList.add("red-border");
+    }
+    else {
+        document.getElementById('bookName').classList.remove("red-border");
+    }
+
+    if (!isNameValid(book.authorName)){
+        document.getElementById('authorName').classList.add("red-border");
+    }
+    else {
+        document.getElementById('authorName').classList.remove("red-border");
+    }
+    if (!isScoreValid(book.score)) {
+        document.getElementById('score').classList.add("red-border");
+    }
+    else {
+        document.getElementById('score').classList.remove("red-border");
+    }
 }
 function addBook(){
 	var bookName = document.getElementById('bookName').value;
 	var authorName = document.getElementById('authorName').value;
 	var score = document.getElementById('score').value;
 	var book = new Book(bookName, authorName, score);
+    markWrongFields(book);
 
     if (isBookValid(book)) {
         addToList(book);
